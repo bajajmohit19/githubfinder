@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/githubfinder/static/css/main.a689a578.chunk.css",
+    "main.js": "/githubfinder/static/js/main.3c726249.chunk.js",
+    "main.js.map": "/githubfinder/static/js/main.3c726249.chunk.js.map",
+    "runtime-main.js": "/githubfinder/static/js/runtime-main.a6e2a531.js",
+    "runtime-main.js.map": "/githubfinder/static/js/runtime-main.a6e2a531.js.map",
+    "static/js/2.047add32.chunk.js": "/githubfinder/static/js/2.047add32.chunk.js",
+    "static/js/2.047add32.chunk.js.map": "/githubfinder/static/js/2.047add32.chunk.js.map",
+    "index.html": "/githubfinder/index.html",
+    "precache-manifest.ffae7c149020123d54c7c29ad12c7964.js": "/githubfinder/precache-manifest.ffae7c149020123d54c7c29ad12c7964.js",
+    "service-worker.js": "/githubfinder/service-worker.js",
+    "static/css/main.a689a578.chunk.css.map": "/githubfinder/static/css/main.a689a578.chunk.css.map",
+    "static/media/spinner-icon-gif-10.jpg": "/githubfinder/static/media/spinner-icon-gif-10.bbf63906.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a6e2a531.js",
+    "static/js/2.047add32.chunk.js",
+    "static/css/main.a689a578.chunk.css",
+    "static/js/main.3c726249.chunk.js"
+  ]
+}
