@@ -37,7 +37,6 @@ const App = () => {
 
   useEffect(async () => {
     //  function fetchData(){
-    console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET, process.env.REACT_APP_GITHUB_CLIENT_ID)
     setLoading(true)
     const res = await axios.get(`https://api.github.com/users?client_id=${githubClientId}&client_secret=${githubClientSecret}`)
     console.log(res.data)
