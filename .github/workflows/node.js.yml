@@ -10,7 +10,7 @@ on:
     branches: [ "master" ]
     
     
-    
+     
 jobs:
 
  app_versioning:
