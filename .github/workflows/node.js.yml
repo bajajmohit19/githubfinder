@@ -1,0 +1,73 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+    
+    
+     
+jobs:  
+
+ app_versioning:
+     name: Establish App Version
+     runs-on: ubuntu-latest
+     
+     outputs:
+       version: ${{ steps.taggerDryRun.outputs.new_tag }}
+       
+     steps:
+     - uses: actions/checkout@v2
+       with:
+        fetch-depth: '0'
+     - name: Minor version for each merge
+       id: taggerDryRun
+       uses: anothrNick/github-tag-action@1.36.0
+       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEFAULT_BUMP: patch
+        DRY_RUN: true 
+        PRERELEASE: true
+        
+     - name: Display current running version
+       run: |
+        echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
+        
+     - name: Display New Version
+       run: |
+        echo "The next tag version will be: ${{ steps.taggerDryRun.outputs.new_tag }}"
+     - name: Display type of SemVer (major/minor/patch)
+       run: |
+        echo "The version increment was: ${{ steps.taggerDryRun.outputs.part }}"
+        
+     - name: version_bump
+       if: github.event.pull_request.merged == true
+       id: taggerFinal
+       uses: anothrNick/github-tag-action@1.55.0
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         WITH_V: true 
+#          DEFAULT_BUMP: patch
+         
+#  build:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [14.x, 16.x, 18.x]
+#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+#     - run: npm ci
+#     - run: npm run build --if-present
+#     - run: npm test
