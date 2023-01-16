@@ -42,7 +42,7 @@ jobs:
        run: |
         echo "The version increment was: ${{ steps.taggerDryRun.outputs.part }}"
         
-version_bump:
+     - name: version_bump
        if: github.event.pull_request.merged == true
        id: taggerFinal
        uses: anothrNick/github-tag-action@1.55.0
